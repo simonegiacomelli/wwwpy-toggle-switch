@@ -72,6 +72,7 @@ class UcToggleSwitchComponent(wpc.Component, tag_name='uc-toggle-switch'):
         margin-left: 0.5em;
         vertical-align: middle;
         font-size: 1em;
+        cursor: pointer;
     }
 </style>
 <label class="switch">
