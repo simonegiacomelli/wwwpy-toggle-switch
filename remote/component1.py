@@ -18,27 +18,24 @@ class Component1(wpc.Component, tag_name='component-1'):
         # language=html
         self.element.innerHTML = """
 <div>component-1</div>
-<input data-name="input1" placeholder="input1">
-<hr>
-<sl-switch data-name="slSwitch1">slSwitch1</sl-switch>
-<button data-name="button1">button1</button>
 <hr>
 <uc-toggle-switch data-name='sw1' checked text='ccc'></uc-toggle-switch>
 <hr>
+<div>When a change is applied below, it will be copied to the switch above</div>
+<br>
 <uc-toggle-switch data-name='sw2' text='changes the above'></uc-toggle-switch>
+<hr>
+<uc-toggle-switch data-name='sw3' text='This has no event handler'></uc-toggle-switch>
 """
     
     async def sw1__input(self, event):
         logger.debug(f'sw1={self.sw1.checked_bool} ')
+        self.sw1.text = f'sw1 checked={self.sw1.checked_bool}'
 
     async def sw2__input(self, event):
         logger.debug(f'sw2={self.sw1.checked_bool} ')
         self.sw1.checked_bool = self.sw2.checked_bool
+        self.sw2.text = f'sw2 checked={self.sw2.checked_bool}'
 
-    
-    async def button1__click(self, event):
-        logger.debug(f'{inspect.currentframe().f_code.co_name} event fired %s', event)
-    
-    
 
 
